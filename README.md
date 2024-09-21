@@ -107,22 +107,20 @@ The `docker-compose.yml` file configures the **PostgreSQL** database container. 
 ### **Docker Compose File (`docker-compose.yml`)**
 
 ```yaml
-version: '3.8'
+version: '3'
+
 services:
-  database:
-    image: postgres:13
-    container_name: postgres-db
+  db:
+    image: postgres:16.3
+    restart: always
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
-    ports:
-      - '5432:5432'
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
 
-volumes:
-  pgdata:
 ```
 
 ---
