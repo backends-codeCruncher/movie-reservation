@@ -7,6 +7,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { User } from './entities/user.entity';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { CommonModule } from '../common/common.module';
 
 @Module({
   controllers: [AuthController],
@@ -16,6 +17,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     TypeOrmModule.forFeature([User]),
     CustomPassportModule,
     CustomJwtModule,
+    CommonModule,
   ],
   exports: [TypeOrmModule, JwtStrategy, CustomPassportModule, AuthService],
 })

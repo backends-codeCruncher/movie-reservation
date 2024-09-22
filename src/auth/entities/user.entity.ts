@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ValidRoles } from '../enums/valid-roles.enum';
 
-@Entity()
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -21,7 +21,7 @@ export class User {
     enum: ValidRoles,
     default: [ValidRoles.user],
   })
-  role: string[];
+  roles: string[];
 
   // Relation with reservations
 }

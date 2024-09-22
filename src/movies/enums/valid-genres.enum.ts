@@ -1,0 +1,16 @@
+export enum ValidGenres {
+  Action = 'Action',
+  Adventure = 'Adventure',
+  Animation = 'Animation',
+  Comedy = 'Comedy',
+  Crime = 'Crime',
+  Drama = 'Drama',
+  Family = 'Family',
+  Fantasy = 'Fantasy',
+  Horror = 'Horror',
+  Mystery = 'Mystery',
+  Romance = 'Romance',
+  SciFi = 'Sci-Fi',
+  Thriller = 'Thriller',
+  Western = 'Western',
+}
