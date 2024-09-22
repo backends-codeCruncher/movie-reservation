@@ -6,12 +6,12 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Movie } from './entities/movie.entity';
-import { Any, ILike, QueryFailedError, Repository } from 'typeorm';
-import { CreateMovieDto, UpdateMovieDto } from './dto';
+import { QueryFailedError, Repository } from 'typeorm';
 import { User } from '../auth/entities/user.entity';
-import { ValidGenres, ValidRates } from './enums';
 import { PaginationDto } from '../common/dto/pagination.dto';
+import { CreateMovieDto, UpdateMovieDto } from './dto';
+import { Movie } from './entities/movie.entity';
+import { ValidGenres, ValidRates } from './enums';
 
 @Injectable()
 export class MoviesService {

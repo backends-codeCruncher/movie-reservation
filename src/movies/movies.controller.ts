@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import { Auth, GetUser } from '../auth/decorators';
 import { User } from '../auth/entities/user.entity';
-import { ValidRoles } from './../auth/enums/valid-roles.enum';
-import { MoviesService } from './movies.service';
-import { CreateMovieDto, UpdateMovieDto } from './dto';
 import { PaginationDto } from '../common/dto/pagination.dto';
+import { ValidRoles } from './../auth/enums/valid-roles.enum';
+import { CreateMovieDto, UpdateMovieDto } from './dto';
+import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
