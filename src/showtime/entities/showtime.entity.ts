@@ -3,41 +3,30 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
+  Timestamp,
+  Unique,
 } from 'typeorm';
+import { Movie } from '../../movies/entities/movie.entity';
 import { User } from '../../auth/entities/user.entity';
-import { ValidGenres, ValidRates } from '../enums';
 
-@Entity('movies')
-export class Movie {
+@Entity('showtimes')
+@Unique(['startTime', 'movie'])
+export class Showtime {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('text')
-  title: string;
+  @Column('timestamp')
+  startTime: Date;
 
-  @Column('text')
-  description: string;
+  @Column('timestamp')
+  endTime: Date;
 
-  @Column('text')
-  posterUrl: string;
-
-  @Column({
-    array: true,
-    type: 'enum',
-    enum: ValidGenres,
+  @Column('int', {
+    default: 100,
   })
-  genres: string[];
-
-  @Column({
-    type: 'enum',
-    enum: ValidRates,
-    default: ValidRates.TBA,
-  })
-  rate: string;
-
-  @Column('int')
-  runtime: number;
+  capacity: number;
 
   @Column('bool', {
     default: true,
@@ -52,6 +41,9 @@ export class Movie {
 
   @CreateDateColumn()
   deletedAt: Date;
+
+  @ManyToOne(() => Movie, (movie) => movie.id)
+  movie: Movie;
 
   @ManyToOne(() => User)
   createdBy: User;

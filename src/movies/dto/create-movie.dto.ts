@@ -1,4 +1,5 @@
-import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateMovieDto {
   @IsString()
@@ -12,6 +13,10 @@ export class CreateMovieDto {
   @IsString()
   @IsNotEmpty()
   posterUrl: string;
+
+  @IsNumber()
+  @Type(() => Number)
+  runtime: number;
 
   @IsArray()
   @IsString({ each: true })

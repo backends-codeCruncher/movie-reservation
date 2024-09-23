@@ -165,7 +165,7 @@ export class MoviesService {
       throw new NotFoundException(`Movie with id ${id} not found`);
     }
 
-    return { movie };
+    return movie;
   }
 
   private handleDBException(error: any) {
